@@ -1,0 +1,24 @@
+type Query {
+     hello : String
+     customers(
+                  fullName : String
+                  phoneNumber : String
+                  createdAt : String
+                  paymentType : String) : [CustomerResponse]
+}
+
+type CustomerResponse {
+      id : String
+      fullName : String
+      phoneNumber : String
+      address : String
+      createdAt : String
+      purchaseTransactions : [PurchaseTransactionResponse]
+}
+
+type PurchaseTransactionResponse {
+      id : String
+      paymentType : String
+      amount : Float
+      createdAt : String
+}

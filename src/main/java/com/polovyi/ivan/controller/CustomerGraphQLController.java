@@ -1,0 +1,31 @@
+package com.polovyi.ivan.controller;
+
+import com.polovyi.ivan.dto.CustomerResponse;
+import com.polovyi.ivan.service.CustomerService;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.graphql.data.method.annotation.SchemaMapping;
+import org.springframework.stereotype.Controller;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Controller
+public record CustomerGraphQLController(CustomerService customerService) {
+
+    @QueryMapping
+    public String hello() {
+        return "Hello, world!";
+    }
+
+    @QueryMapping(name = "customers")
+    public List<CustomerResponse> getAllCustomersWithFilters(
+            @Argument String fullName,
+            @Argument String phoneNumber,
+            @Argument LocalDate createdAt,
+            //@DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate createdAt,
+            @Argument String paymentType) {
+        return customerService.getAllCustomersWithFilters(fullName, phoneNumber, createdAt, paymentType);
+    }
+
+}

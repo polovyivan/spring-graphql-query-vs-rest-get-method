@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "29e69f8e-248b-4ae6-8cc1-cc8435696142",
+		"name": "spring-graphql-query-vs-rest-get-method",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "graphql",
+			"item": [
+				{
+					"name": "/graphql",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    hello\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/customers-graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"spring-graphql-query-vs-rest-get-method",
+								"customers-graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/graphql-customers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    getAllCustomersWithFilters( fullName: null\n                                phoneNumber : null\n                                createdAt : null\n                                paymentType : \"DINERS_CLUB\") {\n                                                     id\n                                                     fullName \n                                                     phoneNumber\n                                                     address\n                                                     createdAt\n                                                     purchaseTransactions {\n                                                                            id \n                                                                            paymentType\n                                                                            amount \n                                                                            createdAt\n                                                                           }\n\n                                                    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/customers-graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"spring-graphql-query-vs-rest-get-method",
+								"customers-graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/customers (with filters)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"spring-graphql-query-vs-rest-get-method",
+						"v1",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers-all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"spring-graphql-query-vs-rest-get-method",
+						"v1",
+						"customers-all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers/{customerId}/purchase-transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers/9514f12f-71be-4825-b046-3b0c82d2e5a5/purchase-transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"spring-graphql-query-vs-rest-get-method",
+						"v1",
+						"customers",
+						"9514f12f-71be-4825-b046-3b0c82d2e5a5",
+						"purchase-transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers/{customerId}/purchase-transactions/{purchaseTransactionId}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers/9514f12f-71be-4825-b046-3b0c82d2e5a5/purchase-transactions/61bfb62a-d80e-45f6-a494-817ef34b3edd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"spring-graphql-query-vs-rest-get-method",
+						"v1",
+						"customers",
+						"9514f12f-71be-4825-b046-3b0c82d2e5a5",
+						"purchase-transactions",
+						"61bfb62a-d80e-45f6-a494-817ef34b3edd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers/{customerId}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers/9514f12f-71be-4825-b046-3b0c82d2e5a5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"spring-graphql-query-vs-rest-get-method",
+						"v1",
+						"customers",
+						"9514f12f-71be-4825-b046-3b0c82d2e5a5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"phoneNumber\": \"12345\",\n    \"fullName\": \"Ivan\",\n    \"address\": \"home\",\n    \"createdAt\": \"2021-01-01\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/spring-dynamo-db-set-up-using-profiles/v1/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"spring-dynamo-db-set-up-using-profiles",
+						"v1",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
