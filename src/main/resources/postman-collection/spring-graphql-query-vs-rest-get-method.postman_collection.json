@@ -6,10 +6,10 @@
 	},
 	"item": [
 		{
-			"name": "graphql",
+			"name": "/customers-graphql",
 			"item": [
 				{
-					"name": "/graphql",
+					"name": "hello world",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -36,15 +36,204 @@
 					"response": []
 				},
 				{
-					"name": "/graphql-customers",
+					"name": "all-customers",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\n    getAllCustomersWithFilters( fullName: null\n                                phoneNumber : null\n                                createdAt : null\n                                paymentType : \"DINERS_CLUB\") {\n                                                     id\n                                                     fullName \n                                                     phoneNumber\n                                                     address\n                                                     createdAt\n                                                     purchaseTransactions {\n                                                                            id \n                                                                            paymentType\n                                                                            amount \n                                                                            createdAt\n                                                                           }\n\n                                                    }\n}",
+								"query": "query {\n    customers( fullName: null\n                phoneNumber : null\n                createdAt : null\n                paymentType : \"DINERS_CLUB\") {\n                                              id\n                                              fullName \n                                              phoneNumber\n                                              address\n                                              createdAt\n                                              purchaseTransactions {\n                                                                    id \n                                                                    paymentType\n                                                                    amount \n                                                                    createdAt\n                                                                    }\n\n                                                    }\n}",
+								"variables": "{\n    \n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/customers-graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"spring-graphql-query-vs-rest-get-method",
+								"customers-graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all-customers (with variables)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($fullName : String\n       $phoneNumber : String\n       $createdAt : Date \n       $paymentType : String){\n    customers(  fullName: $fullName\n                phoneNumber : $phoneNumber\n                createdAt : $createdAt\n                paymentType : $paymentType) {\n                                              id\n                                              fullName \n                                              phoneNumber\n                                              address\n                                              createdAt\n                                              purchaseTransactions {\n                                                                    id \n                                                                    paymentType\n                                                                    amount \n                                                                    createdAt\n                                                                    }\n\n                                                    }\n}",
+								"variables": "{\n    \"fullName\": null,\n    \"phoneNumber\" : null,\n    \"createdAt\" : null,\n    \"paymentType\" : null\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/customers-graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"spring-graphql-query-vs-rest-get-method",
+								"customers-graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer by id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    customer( customerId: \"06d16a64-c343-4ece-b876-fb1407112336\") {\n                                              id\n                                              fullName \n                                              phoneNumber\n                                              address\n                                              createdAt\n                                              purchaseTransactions {\n                                                                    id \n                                                                    paymentType\n                                                                    amount \n                                                                    createdAt\n                                                                    }\n\n                                                    }\n}",
 								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/customers-graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"spring-graphql-query-vs-rest-get-method",
+								"customers-graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer by id (with variables)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($customerId : String){\n    customer( customerId: $customerId) {\n                                        id\n                                        fullName \n                                        phoneNumber\n                                        address\n                                        createdAt\n                                        purchaseTransactions {\n                                                              id \n                                                              paymentType\n                                                              amount \n                                                              createdAt\n                                                             }\n\n                                        }\n}",
+								"variables": "{\n    \"customerId\": \"06d16a64-c343-4ece-b876-fb1407112336\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/customers-graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"spring-graphql-query-vs-rest-get-method",
+								"customers-graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "purchase transactions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    customerTransactions( customerId: \"0227f5ef-a9da-4681-b7c6-67792e4445a1\") {\n                                                                    id \n                                                                    paymentType\n                                                                    amount \n                                                                    createdAt                                                             \n                                                    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/customers-graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"spring-graphql-query-vs-rest-get-method",
+								"customers-graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "purchase transactions (with variables)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($customerId : String){\n    customerTransactions( customerId: $customerId){\n                                                    id \n                                                    paymentType\n                                                    amount \n                                                    createdAt                                                             \n                                                    }\n}",
+								"variables": "{\n    \"customerId\": \"0227f5ef-a9da-4681-b7c6-67792e4445a1\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/customers-graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"spring-graphql-query-vs-rest-get-method",
+								"customers-graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "purchase transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    customerTransaction( \n        customerId: \"02de562f-1c78-4aeb-862a-2d8835249cd5\"\n        purchaseTransactionId: \"81493d89-6f46-48e9-a29b-4940f73b0c91\") {\n                                                                    id \n                                                                    paymentType\n                                                                    amount \n                                                                    createdAt                                                             \n                                                    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/customers-graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"spring-graphql-query-vs-rest-get-method",
+								"customers-graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "purchase transaction  (with variables)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($customerId : String\n       $purchaseTransactionId : String) {\n    customerTransaction( \n        customerId: $customerId\n        purchaseTransactionId: $purchaseTransactionId) {\n                                                                    id \n                                                                    paymentType\n                                                                    amount \n                                                                    createdAt                                                             \n                                                    }\n}",
+								"variables": "{\n    \"customerId\" : \"02de562f-1c78-4aeb-862a-2d8835249cd5\",\n    \"purchaseTransactionId\" : \"81493d89-6f46-48e9-a29b-4940f73b0c91\"\n}"
 							}
 						},
 						"url": {

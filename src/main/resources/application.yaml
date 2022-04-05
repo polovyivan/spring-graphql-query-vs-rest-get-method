@@ -3,20 +3,25 @@ server:
   servlet:
     context-path: /spring-graphql-query-vs-rest-get-method
 
-
+graphql:
+  extended-scalars: BigDecimal, Date
 
 spring:
+
   graphql:
     path: /customers-graphql
     schema:
       printer:
         enabled: false # The GraphQL schema can be viewed at HTTP GET /graphql/schema by enabling this property ???
       locations: classpath:graphql/
+    extended-scalars: Date
+
   datasource:
     url: jdbc:h2:mem:customerdb
     driverClassName: org.h2.Driver
     username: sa
     password: password
+
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
 
