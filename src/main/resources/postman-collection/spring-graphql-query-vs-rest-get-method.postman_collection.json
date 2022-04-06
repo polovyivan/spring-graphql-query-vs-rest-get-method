@@ -43,8 +43,8 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\n    customers( fullName: null\n                phoneNumber : null\n                createdAt : null\n                paymentType : \"DINERS_CLUB\") {\n                                              id\n                                              fullName \n                                              phoneNumber\n                                              address\n                                              createdAt\n                                              purchaseTransactions {\n                                                                    id \n                                                                    paymentType\n                                                                    amount \n                                                                    createdAt\n                                                                    }\n\n                                                    }\n}",
-								"variables": "{\n    \n}"
+								"query": "query {\n    customers( fullName: null\n                phoneNumber : null\n                createdAt : null\n                paymentType : null) {\n                                              id\n                                              fullName \n                                              phoneNumber\n                                              address\n                                              createdAt\n                                              purchaseTransactions {\n                                                                    id \n                                                                    paymentType\n                                                                    amount \n                                                                    createdAt\n                                                                    }\n\n                                                    }\n}",
+								"variables": ""
 							}
 						},
 						"url": {
@@ -97,7 +97,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\n    customer( customerId: \"06d16a64-c343-4ece-b876-fb1407112336\") {\n                                              id\n                                              fullName \n                                              phoneNumber\n                                              address\n                                              createdAt\n                                              purchaseTransactions {\n                                                                    id \n                                                                    paymentType\n                                                                    amount \n                                                                    createdAt\n                                                                    }\n\n                                                    }\n}",
+								"query": "query {\n    customer( customerId: \"03d1c7f7-bb6a-499b-9dde-c4e0218051a8\") {\n                                              id\n                                              fullName \n                                              phoneNumber\n                                              address\n                                              createdAt\n                                              purchaseTransactions {\n                                                                    id \n                                                                    paymentType\n                                                                    amount \n                                                                    createdAt\n                                                                    }\n\n                                                    }\n}",
 								"variables": ""
 							}
 						},
@@ -259,7 +259,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers",
+					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers?paymentType=DINERS_CLUB",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -269,6 +269,27 @@
 						"spring-graphql-query-vs-rest-get-method",
 						"v1",
 						"customers"
+					],
+					"query": [
+						{
+							"key": "fullName",
+							"value": "Rueben Purdy",
+							"disabled": true
+						},
+						{
+							"key": "phoneNumber",
+							"value": "893-087-1038",
+							"disabled": true
+						},
+						{
+							"key": "createdAt",
+							"value": "2016-01-30",
+							"disabled": true
+						},
+						{
+							"key": "paymentType",
+							"value": "DINERS_CLUB"
+						}
 					]
 				}
 			},
@@ -296,12 +317,12 @@
 			"response": []
 		},
 		{
-			"name": "/customers/{customerId}/purchase-transactions",
+			"name": "/customers/{customerId}",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers/9514f12f-71be-4825-b046-3b0c82d2e5a5/purchase-transactions",
+					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers/00cef8df-a849-413c-89c7-c11cd0cdd0a5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -311,7 +332,29 @@
 						"spring-graphql-query-vs-rest-get-method",
 						"v1",
 						"customers",
-						"9514f12f-71be-4825-b046-3b0c82d2e5a5",
+						"00cef8df-a849-413c-89c7-c11cd0cdd0a5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers/{customerId}/purchase-transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers/0abad436-fdd3-4e1f-a23a-a8c20c474a20/purchase-transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"spring-graphql-query-vs-rest-get-method",
+						"v1",
+						"customers",
+						"0abad436-fdd3-4e1f-a23a-a8c20c474a20",
 						"purchase-transactions"
 					]
 				}
@@ -324,7 +367,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers/9514f12f-71be-4825-b046-3b0c82d2e5a5/purchase-transactions/61bfb62a-d80e-45f6-a494-817ef34b3edd",
+					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers/0abad436-fdd3-4e1f-a23a-a8c20c474a20/purchase-transactions/0c7913be-fa94-4822-a4cd-da99b792eb3e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -334,61 +377,9 @@
 						"spring-graphql-query-vs-rest-get-method",
 						"v1",
 						"customers",
-						"9514f12f-71be-4825-b046-3b0c82d2e5a5",
+						"0abad436-fdd3-4e1f-a23a-a8c20c474a20",
 						"purchase-transactions",
-						"61bfb62a-d80e-45f6-a494-817ef34b3edd"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/customers/{customerId}",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8001/spring-graphql-query-vs-rest-get-method/v1/customers/9514f12f-71be-4825-b046-3b0c82d2e5a5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"spring-graphql-query-vs-rest-get-method",
-						"v1",
-						"customers",
-						"9514f12f-71be-4825-b046-3b0c82d2e5a5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/customers",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": \"1\",\n    \"phoneNumber\": \"12345\",\n    \"fullName\": \"Ivan\",\n    \"address\": \"home\",\n    \"createdAt\": \"2021-01-01\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8001/spring-dynamo-db-set-up-using-profiles/v1/customers",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8001",
-					"path": [
-						"spring-dynamo-db-set-up-using-profiles",
-						"v1",
-						"customers"
+						"0c7913be-fa94-4822-a4cd-da99b792eb3e"
 					]
 				}
 			},

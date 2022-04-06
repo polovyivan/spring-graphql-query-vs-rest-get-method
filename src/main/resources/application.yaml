@@ -4,17 +4,8 @@ server:
     context-path: /spring-graphql-query-vs-rest-get-method
 
 graphql:
-  extended-scalars: BigDecimal, Date
-
-spring:
-
-  graphql:
-    path: /customers-graphql
-    schema:
-      printer:
-        enabled: false # The GraphQL schema can be viewed at HTTP GET /graphql/schema by enabling this property ???
-      locations: classpath:graphql/
-    extended-scalars: Date
+  servlet:
+    mapping: /customers-graphql
 
   datasource:
     url: jdbc:h2:mem:customerdb
@@ -24,8 +15,6 @@ spring:
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-
-
 
 # Used for test, it logs queries
 logging:

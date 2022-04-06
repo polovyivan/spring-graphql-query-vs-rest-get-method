@@ -23,8 +23,7 @@ public record CustomerService(CustomerRepository customerRepository) {
 
     public CustomerResponse getCustomersById(String customerId) {
         log.info("Getting customer by id...");
-        return customerRepository.findById(customerId).map(CustomerResponse::valueOf).orElseThrow(
-                RuntimeException::new);
+        return customerRepository.findById(customerId).map(CustomerResponse::valueOf).orElse(null);
 
     }
 
@@ -48,7 +47,7 @@ public record CustomerService(CustomerRepository customerRepository) {
                 .filter(purchaseTransaction -> purchaseTransactionId.equals(purchaseTransaction.getId()))
                 .map(PurchaseTransactionResponse::valueOf)
                 .findFirst()
-                .orElseThrow(RuntimeException::new);
+                .orElse(null);
     }
 
     public List<CustomerResponse> getAllCustomersWithFilters(String fullName, String phoneNumber,

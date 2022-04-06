@@ -9,6 +9,7 @@ import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -37,8 +38,8 @@ public class CustomerEntity {
 
     private LocalDate createdAt;
 
-    @OneToMany
-    @JoinColumn(name="customer_id")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_id")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private List<PurchaseTransactionEntity> purchaseTransactions;
